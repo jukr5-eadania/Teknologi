@@ -47,7 +47,9 @@ namespace Teknologi
 
             foreach (var item in delegateArray)
             {
-                WriteToScreen(item);
+                WriteToScreen(item, 2, 2);
+                WriteToScreen(item, 5, 7);
+                WriteToScreen(item, 10, 25);
             }
 
             Console.ReadLine();
@@ -91,9 +93,9 @@ namespace Teknologi
             return c;
         }
 
-        static void WriteToScreen(Func<int, int, int> action)
+        static void WriteToScreen(Func<int, int, int> action, int a, int b)
         {
-            int result = action(10, 25);
+            int result = action(a, b);
             Console.WriteLine(result);
         }
     }
