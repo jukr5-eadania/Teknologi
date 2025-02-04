@@ -23,7 +23,7 @@ namespace Teknologi
             List<int> num = new List<int>() { 4, 32, 73, 312, 58215 };
 
             //Sorts a list from lowest to highest
-            num.Sort(new Comparison<int>(lowFirst));
+            num.Sort(new Comparison<int>(LowFirst));
 
             foreach (int item in num)
             {
@@ -31,17 +31,29 @@ namespace Teknologi
             }
 
             //Sorts a list from highest to lowest
-            num.Sort(new Comparison<int>(highFirst));
+            num.Sort(new Comparison<int>(HighFirst));
 
             foreach (int item in num)
             {
                 Console.WriteLine(item);
             }
 
+            //Delegate array to use more methods
+            Func<int, int, int>[] delegateArray =
+            {
+                AddNumbers,
+                SubtractNumbers
+            };
+
+            foreach (var item in delegateArray)
+            {
+                WriteToScreen(item);
+            }
+
             Console.ReadLine();
         }
 
-        static int lowFirst(int a, int b)
+        static int LowFirst(int a, int b)
         {
             if (a > b)
             {
@@ -54,7 +66,7 @@ namespace Teknologi
             return 0;
         }
 
-        static int highFirst(int a, int b)
+        static int HighFirst(int a, int b)
         {
             if (a < b)
             {
@@ -65,6 +77,24 @@ namespace Teknologi
                 return -1;
             }
             return 0;
+        }
+
+        static int AddNumbers(int a, int b)
+        {
+            int c = a + b;
+            return c;
+        }
+
+        static int SubtractNumbers(int a, int b)
+        {
+            int c = a - b;
+            return c;
+        }
+
+        static void WriteToScreen(Func<int, int, int> action)
+        {
+            int result = action(10, 25);
+            Console.WriteLine(result);
         }
     }
 }
