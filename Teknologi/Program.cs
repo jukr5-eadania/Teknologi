@@ -10,6 +10,14 @@ namespace Teknologi
     {
         delegate void stringDelegate(string a, string b, string c);
 
+        static bool keepRunning = true;
+
+        static void ReactToDeath(Player p)
+        {
+            Console.WriteLine($"{p} died");
+            keepRunning = false;
+        }
+
         static void CollectString(string a, string b, string c)
         {
             Console.WriteLine($"{a} {b} {c}");
@@ -50,6 +58,16 @@ namespace Teknologi
                 WriteToScreen(item, 2, 2);
                 WriteToScreen(item, 5, 7);
                 WriteToScreen(item, 10, 25);
+            }
+
+            Player p = new Player("Nimi Nightmare");
+            p.DeathEvent += ReactToDeath;
+
+            while (keepRunning)
+            {
+                p.Health--;
+
+                Console.WriteLine(p.Health);
             }
 
             Console.ReadLine();
