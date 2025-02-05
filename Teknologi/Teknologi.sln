@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Event&Delegate", "Event&Del
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Processer&Tråde", "..\Processer&Tråde\Processer&Tråde.csproj", "{30D0595E-9068-4AD0-A0C3-5D773827DD99}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Processer&Tråde2", "..\Processer&Tråde2\Processer&Tråde2.csproj", "{5C3CFAF9-4E04-4547-A2AA-E5B2AF9A9CD1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{30D0595E-9068-4AD0-A0C3-5D773827DD99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30D0595E-9068-4AD0-A0C3-5D773827DD99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30D0595E-9068-4AD0-A0C3-5D773827DD99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C3CFAF9-4E04-4547-A2AA-E5B2AF9A9CD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C3CFAF9-4E04-4547-A2AA-E5B2AF9A9CD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C3CFAF9-4E04-4547-A2AA-E5B2AF9A9CD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C3CFAF9-4E04-4547-A2AA-E5B2AF9A9CD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
