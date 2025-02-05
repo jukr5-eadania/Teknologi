@@ -15,9 +15,11 @@ namespace Processer_Tråde
         static void Main(string[] args)
         {
             Thread myThread = new Thread(ThreadWork);
+            Class1 dataThread = new Class1("Hello World");
+
+            dataThread.Start();
 
             myThread.IsBackground = true;
-
             myThread.Start();
 
             Console.WriteLine("Bruh1");
