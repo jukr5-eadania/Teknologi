@@ -11,27 +11,33 @@ namespace Processer_Tråde
     {
         public static bool running = true;
         public static int counter;
+        public static bool keepRunning = true;
 
         static void Main(string[] args)
         {
             Thread myThread = new Thread(ThreadWork);
-            Class1 dataThread = new Class1("Hello World");
-
-            dataThread.Start();
-
             myThread.IsBackground = true;
-            myThread.Start();
+            Class1 dataThread = new Class1("Hello World");
+            Thread t1 = new Thread(M1);
+            Thread t2 = new Thread(M2);
+            t1.IsBackground = true;
+            t2.IsBackground = true;
 
-            Console.WriteLine("Bruh1");
-            while (running)
-            {
-                if (counter >= 10)
-                {
-                    running = false;
-                }
-            }
+            //dataThread.Start();
+            //myThread.Start();
+            t1.Start();
+            t2.Start();
 
-            Console.WriteLine("Press any button to stop the program");
+
+            //Console.WriteLine("Bruh1");
+            //while (running)
+            //{
+            //    if (counter >= 1)
+            //    {
+            //        running = false;
+            //    }
+            //}
+
             Console.ReadKey();
         }
 
@@ -43,6 +49,28 @@ namespace Processer_Tråde
                 counter++;
                 Thread.Sleep(1000);
             }
+        }
+
+        private static void M1()
+        {
+            while (keepRunning)
+            {
+                Console.WriteLine("Tap Tap");
+                Thread.Sleep(500);
+            }
+        }
+
+        private static void M2()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine("Tapir");
+                Thread.Sleep(500);
+            }
+
+            keepRunning = false;
+            Console.WriteLine("Press any button to stop the program");
+
         }
     }
 }
