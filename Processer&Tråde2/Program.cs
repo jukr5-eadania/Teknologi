@@ -32,7 +32,7 @@ namespace Processer_Tråde2
             int i = 0;
             while (true)
             {
-                m.WaitOne();
+                m.WaitOne(100);
 
                 if (state == 5)
                 {
