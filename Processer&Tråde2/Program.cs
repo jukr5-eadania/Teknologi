@@ -11,7 +11,7 @@ namespace Processer_Tråde2
     internal class Program
     {
         public static int state = 5;
-        static readonly object lockObject = new object();
+        static Mutex m = new Mutex(true);
 
         static void Main(string[] args)
         {
@@ -20,6 +20,11 @@ namespace Processer_Tråde2
                 Thread t = new Thread(RunMe);
                 t.Start();
             }
+
+            Console.WriteLine("The threads are waiting");
+            Console.ReadLine();
+            m.ReleaseMutex();
+
         }
 
         static void RunMe()
@@ -27,15 +32,16 @@ namespace Processer_Tråde2
             int i = 0;
             while (true)
             {
-                lock (lockObject)
+                m.WaitOne();
+
+                if (state == 5)
                 {
-                    if (state == 5)
-                    {
-                        state++;
-                        Trace.Assert(state == 6, "Race condition in loop " + i);
-                    }
-                    state = 5;
+                    state++;
+                    Trace.Assert(state == 6, "Race condition in loop " + i);
                 }
+                state = 5;
+
+                m.ReleaseMutex();
                 i++;
             }
         }
