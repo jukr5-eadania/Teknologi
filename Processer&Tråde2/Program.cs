@@ -11,6 +11,7 @@ namespace Processer_Tråde2
     internal class Program
     {
         public static int state = 5;
+        static readonly object lockObject = new object();
 
         static void Main(string[] args)
         {
@@ -26,12 +27,15 @@ namespace Processer_Tråde2
             int i = 0;
             while (true)
             {
-                if (state == 5)
+                lock (lockObject)
                 {
-                    state++;
-                    Trace.Assert(state == 6, "Race condition in loop " + i);
+                    if (state == 5)
+                    {
+                        state++;
+                        Trace.Assert(state == 6, "Race condition in loop " + i);
+                    }
+                    state = 5;
                 }
-                state = 5;
                 i++;
             }
         }
